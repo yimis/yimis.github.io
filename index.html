@@ -1,12 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>Welcome to Yimis</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>依米 · 种子正在发芽</title>
+<style>
+  :root {
+    --green: #6fbf8f;
+    --green-deep: #3e8e63;
+    --green-pale: #eaf6ee;
+    --ink: #4a5a50;
+    --white: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, var(--white) 0%, var(--green-pale) 100%);
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, sans-serif;
+    color: var(--ink);
+    padding: 24px;
+  }
+  .card {
+    max-width: 560px;
+    width: 100%;
+    background: var(--white);
+    border-radius: 24px;
+    padding: 56px 48px 48px;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(111, 191, 143, .18);
+    border: 1px solid rgba(111, 191, 143, .25);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: var(--green-pale);
+  }
+  .leaf { font-size: 56px; line-height: 1; margin-bottom: 20px; }
+  h1 {
+    font-size: 26px;
+    color: var(--green-deep);
+    font-weight: 600;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+  .divider {
+    width: 48px; height: 3px;
+    border-radius: 2px;
+    background: var(--green);
+    margin: 0 auto 24px;
+  }
+  p.msg {
+    font-size: 16px;
+    line-height: 2;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  p.msg em { font-style: normal; color: var(--green-deep); }
+  .contact {
+    display: inline-block;
+    background: var(--green-pale);
+    border: 1px dashed var(--green);
+    border-radius: 999px;
+    padding: 10px 26px;
+    font-size: 15px;
+    color: var(--green-deep);
+  }
+  .contact a { color: var(--green-deep); text-decoration: none; font-weight: 600; }
+  .contact a:hover { text-decoration: underline; }
+  .foot { margin-top: 36px; font-size: 12px; color: #9db3a6; letter-spacing: 1px; }
+  .hint { font-size: 12px; color: #9db3a6; margin-left: 6px; }
+
+  @media (max-width: 480px) {
+    body { padding: 16px; min-height: 100dvh; }
+    .card { border-radius: 20px; padding: 40px 20px 34px; }
+    .card::before { top: -44px; right: -44px; width: 118px; height: 118px; }
+    .leaf { font-size: 42px; margin-bottom: 14px; }
+    h1 { font-size: 20px; margin-bottom: 12px; letter-spacing: .5px; }
+    .divider { margin-bottom: 18px; }
+    p.msg { font-size: 15px; line-height: 1.95; margin-bottom: 22px; }
+    p.msg br { display: none; }   /* 窄屏按段落自然换行，避免折行参差 */
+    .contact {
+      display: block;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .contact .hint { display: block; margin-left: 0; }
+    .foot { margin-top: 26px; }
+  }
+</style>
 </head>
 <body>
-Welcome to Yimis
-<br>
-please visit <a href="https://blog.wallelab.com" target="_blank">https://blog.wallelab.com</a>
+  <div class="card">
+    <div class="leaf">🌿</div>
+    <h1>这里呀，本来要长出一个网站的</h1>
+    <div class="divider"></div>
+    <p class="msg">
+      可惜站长<em>忘了给它浇水</em>，<br>
+      这颗网站小种子被随手塞进了仓库角落，<br>
+      呼噜呼噜睡出了芽…… 🌱<br>
+      等哪天他突然想起它，<br>
+      就搬出来晒太阳、正式上线！
+    </p>
+    <div class="contact">等不及？寄封信催催站长 <a href="#" id="mail" title="把 # 换成 @ 就是邮箱">i#yimis.com</a>
+      <span class="hint">（把 # 换成 @）</span></div>
+    <div class="foot">yimis.com 的种子正在发芽，敬请期待～</div>
+  </div>
+<script>
+  // 点击时拼接 mailto: 链接
+  document.getElementById('mail').addEventListener('click', function (e) {
+    e.preventDefault();
+    var a = 'i', b = 'yimis', d = String.fromCharCode(64); // @
+    window.location.href = 'mailto:' + a + d + b + '.com';
+  });
+</script>
 </body>
 </html>
